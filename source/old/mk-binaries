@@ -1,0 +1,17 @@
+#!/bin/bash
+
+out=/media/thomas/Dev/applications/kernel/usr/local/bin/lz-kernel-manager
+
+shc -f lz-k-installer
+shc -f lz-km-sign
+shc -f lz-km-build
+shc -f lz-kernel-manager
+shc -f lz-kmconfig
+
+cp lz-k-installer.x $out/lz-k-installer
+cp lz-km-sign.x $out/lz-km-sign
+cp lz-km-build.x $out/lz-km-build
+cp lz-kernel-manager.x $out/lz-kernel-manager
+cp lz-kmconfig.x $out/lz-kmconfig
+rm *.x.c
+rm *.x

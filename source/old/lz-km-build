@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Cleans the terminal window
+reset
+
+source /etc/mkm.conf
+
+cd $tree
+
+clean () { make clean && make mrproper 
+}
+
+dirty () { echo "Dirty build!"
+}
+
+echo "What build to run?"
+select ynq in "clean" "dirty" "quit"; do
+    case $ynq in
+	clean ) clean ;break;;
+	dirty ) dirty ;break;;
+	quit ) echo Bye! ;exit;;
+esac;
+done
+
+# Number of cores to be used
+export CONCURRENCY_LEVEL=$(nproc --all)
+echo "${bldblu}${txtbld}Using $CONCURRENCY_LEVEL cores${txtrst}"
+
+make oldconfig && make prepare
+time make CC="ccache gcc" deb-pkg -j $(nproc --all)
+
+# Saving the new build config
+if [ ! -d "configs" ];
+then
+mkdir ./configs && echo "${bldred}${txtbld}Created configs directory to store config file${txtrst}"
+fi
+cp .config configs/.config
+
+# Return to kernel menu
+zenity --question --text "Anything else?"
+    kernel=$?
+    if [[ $kernel -eq 0 ]]; then
+        lz-kernel-manager
+    fi

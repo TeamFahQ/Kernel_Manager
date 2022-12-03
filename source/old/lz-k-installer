@@ -1,0 +1,20 @@
+#!/bin/bash
+source /etc/mkm.conf
+
+pass=$(zenity --password --title="sudo password prompt" --timeout=10);
+
+cd $base
+
+echo $pass | sudo -S ls /tmp > /dev/null 2>&1
+sudo dpkg -i *.deb
+mv *.deb Installed
+rm linux-upstream_6.0*
+lz-km-sign
+
+
+# Return to kernel menu
+zenity --question --text "Anything else?"
+    kernel=$?
+    if [[ $kernel -eq 0 ]]; then
+        lz-kernel-manager
+    fi

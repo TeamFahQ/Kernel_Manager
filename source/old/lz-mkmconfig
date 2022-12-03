@@ -1,0 +1,50 @@
+#!/bin/bash
+
+source colordef
+echo ${bldblu}${txtbld}"This is your first run. Well need to do some setup here to create the config file"
+echo "Well need to add the following:
+${bldred}KERNEL BASE PATH${bldblu}${txtbld}, i.e. 1 directory before the actual tree. /home/source/kernel
+${bldred}FULL PATH TO KERNEL${bldblu}${txtbld}, i.e. /home/source/kernel/6.0
+${bldred}KERNEL VERSION${bldblu}${txtbld}, i.e. 5.19 6.0
+${bldred}YOUR REMOTE/BRANCH${bldblu}${txtbld}, if you track changes, otherwise it can be left blank at the prompt
+${bldred}UPSTEAM${bldblu}${txtbld}, remote/branch"${txtrst}
+read -p "Press enter to continue"
+
+echo "Enter kernel base path" 
+read base
+echo base=$base > mkm.conf
+
+echo "Enter full kernel path"
+read tree
+echo tree=$tree >> mkm.conf
+
+echo "Enter kernel version"
+read vbase
+echo vbase=$vbase >> mkm.conf
+
+echo "Your git remote branch. ie
+origin
+(Only put your remote. This assumes your branch is the same as the kernel version)"
+read remote
+echo remote=$remote >> mkm.conf
+
+echo "Your upstream (source) remote branch
+(Only put upstream remote. This assumes the branch is the same as the kernel version)"
+read ksource
+echo ksource=$ksource >> mkm.conf
+
+echo Inputing some basic parameters into config
+echo "" >> mkm.conf
+cat colordef >> mkm.conf
+echo and done!
+
+echo "mkm.conf to /etc"
+sudo mv mkm.conf /etc
+source /etc/mkm.conf
+
+# Return to kernel menu
+#zenity --question --text "Anything else?"
+#    kernel=$?
+#    if [[ $kernel -eq 0 ]]; then
+#        kernel
+#    fi

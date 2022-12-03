@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Check for mkm.conf. If not exist (first run) then create one.
+config=/etc/mkm.conf
+if [ -f "$config" ]; then
+    source /etc/mkm.conf
+else
+    mkmconfig && source /etc/mkm.conf
+fi
+
+options="--auto-close --auto-kill"
+
+#zenity --info
+ans=$(zenity --icon-name=icons8-linux-50 --info --title "Kernel Maintainer by Thomas R" --text "Select a function" \
+--extra-button="Sync" --extra-button="Build" --extra-button="Install" --extra-button="Reboot" \
+--extra-button="Push" --extra-button="Open Dir" --extra-button="Sign Kernel" --ok-label="Cancel" \
+--extra-button="Update-config" --width 310);
+
+# Fetch latest commits
+Sync () { cd $tree && git pull $ksource $vbase
+# Return to kernel menu
+zenity --question --text "Anything else?"
+    kernel=$?
+    if [[ $kernel -eq 0 ]]; then
+        lz-kernel-manager
+    fi
+}
+
+# Build the kernel
+Build () { lz-km-build
+}
+
+# Open kernel Install
+Install () { lz-k-installer
+}
+
+Reboot () { pass=$(zenity --password --title="sudo password prompt" --timeout=10)
+echo $pass | sudo -S ls /tmp > /dev/null 2>&1 && sudo reboot now
+}
+
+Push () { cd $tree && git push $remote $vbase
+# Return to kernel menu
+zenity --question --text "Anything else?"
+    kernel=$?
+    if [[ $kernel -eq 0 ]]; then
+        lz-kernel-manager
+    fi
+}
+
+open_dir () { nemo $tree
+}
+
+sign () { lz-km-sign
+}
+
+Update-config () { mkmconfig
+}
+
+if [[ $ans == Sync ]]; then
+	Sync
+elif [[ $ans == Build ]]; then
+	Build
+elif [[ $ans == Install ]]; then
+	Install
+elif [[ $ans == Reboot ]]; then
+	Reboot
+elif [[ $ans == Push ]]; then
+	Push
+elif [[ $ans == "Open Dir" ]]; then
+	open_dir
+elif [[ $ans == "sign" ]]; then
+	sign
+elif [[ $ans == "Update-config" ]]; then
+	Update-config
+fi
+
