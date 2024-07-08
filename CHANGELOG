@@ -1,3 +1,6 @@
+f127b82 Thomas Raines 2024-07-06 Added return statement in changelog.mk. Removed lzkm-cl
+1fff5e8 Thomas Raines 2024-07-02 v1.4:Added make changelog with build dir cleaning, removed button to go to tree && Fixed a minor typo
+8790dfa Thomas Raines 2023-12-06 changlog update
 d97e91b Thomas Raines 2023-12-06 Adding changlog script
 db94dfd Thomas Raines 2023-11-16 Auto move .deb to Releases
 b675e32 Thomas Raines 2023-11-16 Move v1.3 to releases...oops
