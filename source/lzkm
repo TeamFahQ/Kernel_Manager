@@ -13,7 +13,7 @@ options="--auto-close --auto-kill"
 #zenity --info
 ans=$(zenity --icon-name=icons8-linux-50 --info --title "Kernel Maintainer by Thomas R" --text \
  "Select a function" --extra-button="Sync" --extra-button="Build" --extra-button="Install" \
---extra-button="Reboot" --extra-button="Push" --extra-button="Open Dir" --extra-button="Sign-Kernel" \
+--extra-button="Change Log" --extra-button="Reboot" --extra-button="Push" --extra-button="Sign-Kernel" \
 --ok-label="Cancel" --extra-button="Update-config" --width 310);
 
 # Fetch latest commits
@@ -60,7 +60,7 @@ echo "${bldblu}${txtbld}Using $CONCURRENCY_LEVEL cores${txtrst}"
         fi
     }
 
-# Open kernel Install
+# Kernel Install
 Install () { pass=$(zenity --password --title="sudo password prompt" --timeout=10);
     cd $base
     echo $pass | sudo -S ls /tmp > /dev/null 2>&1
@@ -79,10 +79,24 @@ echo Sign kernel?
 Reboot () { echo $pass | sudo -S ls /tmp > /dev/null 2>&1 && sudo reboot now
 }
 
-Push () { cd $tree && git push $remote $branch && return
+# Make the changelog
+changelog () { cd $tree
+echo Clean tree?
+    select yn in "yes" "no"; do
+        case $yn in
+    	yes ) make clean && make mrproper ;break;;
+    	no ) return ;exit;;
+        esac;
+    done
+./changelog.mk
+    echo ${bldblu}${txtbld}Which update?${txtrst}
+read UPDATE
+git add -A
+git commit -m $UPDATE
+return
 }
 
-open_dir () { nemo $tree
+Push () { cd $tree && git push $remote $branch && return
 }
 
 sign () { echo Signing kernel
@@ -159,12 +173,12 @@ elif [[ $ans == Build ]]; then
 	Build
 elif [[ $ans == Install ]]; then
 	Install
+elif [[ $ans == "Change Log" ]]; then
+	changelog
 elif [[ $ans == Reboot ]]; then
 	Reboot
 elif [[ $ans == Push ]]; then
 	Push
-elif [[ $ans == "Open Dir" ]]; then
-	open_dir
 elif [[ $ans == "Sign-Kernel" ]]; then
 	sign
 elif [[ $ans == "Update-config" ]]; then
