@@ -1,23 +1,26 @@
-f127b82 Thomas Raines 2024-07-06 Added return statement in changelog.mk. Removed lzkm-cl
-1fff5e8 Thomas Raines 2024-07-02 v1.4:Added make changelog with build dir cleaning, removed button to go to tree && Fixed a minor typo
-8790dfa Thomas Raines 2023-12-06 changlog update
-d97e91b Thomas Raines 2023-12-06 Adding changlog script
-db94dfd Thomas Raines 2023-11-16 Auto move .deb to Releases
-b675e32 Thomas Raines 2023-11-16 Move v1.3 to releases...oops
-145e4e8 Thomas Raines 2023-11-12 v1.3
-fa65560 Thomas Raines 2023-11-12 Update command line script
-ff0dc90 Thomas Raines 2023-11-12 Improve reboot function to only ask once for password
-731e03b Thomas Raines 2023-11-12 v1.2 and clean up
-4762663 Thomas Raines 2023-07-08 V-1.2
-d1ca10f Thomas Raines 2023-07-08 lzkmconfig:Added definee for branch and corrected lzcolordef path
-f593687 Thomas Raines 2023-07-08 lzkm:Update look, added define for branch and fixed path for lzcolordef
-839dea9 Thomas Raines 2023-07-08 adding .gitignore
-88b8d24 Thomas Raines 2022-12-21 v1.1:Code improvement
-ba8a07a Thomas Raines 2022-12-21 Install funciton: Resolve absolute versioning when removing unneeded files after build and install
-39db691 Thomas Raines 2022-12-18 Restructures source so deb wouldn't include extra files/folders.
-636f2c9 Thomas Raines 2022-12-17 LZ-Kernel-Manager.deb:Repackaged release due to error.
-2d56856 traines 2022-12-17 Update README.md
-40f8d9b Thomas Raines 2022-12-17 LZ-Kernel-Manager.desktop:Found error in catergories definition. Repackaged release to reflect changes.
-1be8a53 Thomas Raines 2022-12-17 Update README
+311558f Thomas Raines 2024-07-28 v1.5
+0de1ec1 Thomas Raines 2024-07-28 v1.5:Switch update-config function to allow editing in text editor; i.e. nano, xed, etc. I found this to be easier than resetting the entire lzkm.conf
+8d55615 Thomas Raines 2024-07-08 v1.4 final
+39386fc Thomas Raines 2024-07-08 moved 1.3 to releases dir
+f1be0b7 Thomas Raines 2024-07-08 Removed lzkm-cl
+fb87d7a Thomas Raines 2024-07-08 Added make changelog with build dir cleaning, removed button to go to tree && Fixed a minor typo
+8b7964a Thomas Raines 2023-12-06 v1.4
+0e97c77 Thomas Raines 2023-12-06 Adding changlog script
+4ccbabc Thomas Raines 2023-11-16 Auto move .deb to Releases
+199171f Thomas Raines 2023-11-12 v1.3
+4badbf5 Thomas Raines 2023-11-12 Update command line script
+54f376f Thomas Raines 2023-11-12 Improve reboot function to only ask once for password
+23b07d1 Thomas Raines 2023-11-12 v1.2 and clean up
+0b43c1e Thomas Raines 2023-07-08 V-1.2
+a08f619 Thomas Raines 2023-07-08 lzkmconfig:Added definee for branch and corrected lzcolordef path
+7685e7c Thomas Raines 2023-07-08 lzkm:Update look, added define for branch and fixed path for lzcolordef
+3289e78 Thomas Raines 2023-07-08 adding .gitignore
+04a005e Thomas Raines 2022-12-21 v1.1:Code improvement
+eb262cd Thomas Raines 2022-12-21 Install funciton: Resolve absolute versioning when removing unneeded files after build and install
+89b396c Thomas Raines 2022-12-18 Restructures source so deb wouldn't include extra files/folders.
+6f4f4cc Thomas Raines 2022-12-17 LZ-Kernel-Manager.deb:Repackaged release due to error.
+912dc3c traines 2022-12-17 Update README.md
+f0b7980 Thomas Raines 2022-12-17 LZ-Kernel-Manager.desktop:Found error in catergories definition. Repackaged release to reflect changes.
+96ed73c Thomas Raines 2022-12-17 Update README
 9821fbd Thomas Raines 2022-12-17 lz-kernel-manager release V1.0
 666fe12 Thomas Raines 2022-12-03 Initial Commit
