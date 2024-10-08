@@ -1,5 +1,6 @@
-311558f Thomas Raines 2024-07-28 v1.5
-0de1ec1 Thomas Raines 2024-07-28 v1.5:Switch update-config function to allow editing in text editor; i.e. nano, xed, etc. I found this to be easier than resetting the entire lzkm.conf
+35947aa Thomas Raines 2024-10-08 Update:1.6
+ee58551 Thomas Raines 2024-10-08 Module signing:Sign newly installed modules instead of modules of currently running kernel...
+5e37222 Thomas Raines 2024-07-28 v1.5:Switch update-config function to allow editing in text editor; i.e. nano, xed, etc. I found this to be easier than resetting the entire lzkm.conf
 8d55615 Thomas Raines 2024-07-08 v1.4 final
 39386fc Thomas Raines 2024-07-08 moved 1.3 to releases dir
 f1be0b7 Thomas Raines 2024-07-08 Removed lzkm-cl
